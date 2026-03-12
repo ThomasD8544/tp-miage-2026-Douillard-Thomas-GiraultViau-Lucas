@@ -153,6 +153,11 @@ _Temps estimé : 20 mins_
 
 *Quels famille de tests devra-t-on écrire pour les adaptateurs ?* 
 
+Pour les adaptateurs, il faut écrire des tests d'intégration. Contrairement au domaine qui se teste avec de simples tests unitaires isolés, les adaptateurs interagissent avec l'extérieur (le framework Web, la BDD).
+
+- Pour l'adaptateur REST (entrée), il faut tester le routage HTTP, la sérialisation/désérialisation JSON et les codes de retour.
+- Pour l'adaptateur de persistance (sortie), il faut tester que les requêtes SQL (ou JPA) fonctionnent réellement contre une base de données.
+
 *S'il vous reste du temps, écrire quelques-uns de ces tests.*
 
 [TIP]
