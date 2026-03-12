@@ -3,6 +3,7 @@ package com.acme.todolist;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -22,22 +23,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class TodoListController {
 
 	private static final String LATE = "[LATE!]";
-	private TodoItemRepository todoItemRepository;
+	private final TodoItemRepository todoItemRepository;
 
 	public TodoListController(TodoItemRepository todoItemRepository) {
 		super();
 		this.todoItemRepository = todoItemRepository;
 	}
-	
-	public TodoListController() {
-		super();		
-	}
 
 	@PostMapping("/todos")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public void createTodoItem(@RequestBody TodoItem todoItem) {
-		// Code à compléter
-		// ...
+		Objects.requireNonNull(todoItem);
+		this.todoItemRepository.save(todoItem);
 	}
 
 	@GetMapping("/todos")
