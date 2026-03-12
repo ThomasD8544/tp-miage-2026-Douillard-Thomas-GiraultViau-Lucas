@@ -127,6 +127,13 @@ Source : http://leanpub.com/get-your-hands-dirty-on-clean-architecture[Tom Hombe
   - la couche `domain` qui contient les entités (au sens DDD, pas au sens JPA). En général des classes complexes (méthodes riches, relations entre les entités)
 
 *Rappeler en quelques lignes les grands principes de l'architecture hexagonale.*
+L'architecture hexagonale permet d'isoler le code métier de l'infrastructure externe (base de données, API externe, …). 
+Les grands principes de l’architecture sont :
+* Isolation du Domaine : Le cœur de l'application ne dépend d'aucun framework technique extérieur.
+* Système de Ports : Le domaine définit des interfaces (Ports) pour communiquer avec l'extérieur. Il y a des ports d'entrée et des ports de sortie
+* Adaptateurs : Les classes techniques (REST, implémentation JPA) qui se branchent sur les ports pour faire le lien entre le monde extérieur et le domaine.
+* Inversion des dépendances : Toutes les dépendances pointent toujours vers l'intérieur. Les adaptateurs dépendent du domaine, mais le domaine ne dépend jamais des adaptateurs.
+
 
 Compléter ce code avec une fonctionnalité de création de `TodoItem`  persisté en base et appelé depuis un endpoint REST `POST /todos` qui :
 
